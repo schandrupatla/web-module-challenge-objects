@@ -64,11 +64,11 @@ export const burger = {
   discount: function(arg1){
     if(arg1==="teacher"){
       console.log("Task-2: " +`price for ${arg1} = $`, 18 * .75);
-      return 18 * .75 ;//13.5;//price 18
+      return this.price * .75 ;//disount 25%
     }
     else{
       console.log("Task-2: " +`price for ${arg1} = $`, 18 * .9);
-      return 18 * .9;//16.2;
+      return this.price * .9;//discount 10%
       
     }
   }
@@ -104,10 +104,9 @@ Using the reviews array above do the following: (no function needed)
   2. log the whole array to the console, make sure the new review is inside of it   
 */
 
-reviews.name = "sri";
-reviews.rating = 5;
-reviews.feedback = "Like the ambiance and friday happy hour drinks menu!";
 
+let results = { name:"sri" , rating: 5 , feedback:"Like the ambiance and friday happy hour drinks menu!"};
+reviews.push(results);
 console.log("Task-4 :" , reviews);
 
 
@@ -196,11 +195,26 @@ Use the getLongReviews function below to do the following:
   ]
 */
 
-   function getLongReviews(myArray) {
-    const results = reviews.filter((review) => review.feedback.split(" ").length > 15);
-    console.log("Task-STRETCH-2 : Feedback words > 15: " , results);
-   }
-   getLongReviews(reviews);
+//using for loop
+function getLongReviews(myArr) {
+  let newArr =[];
+    for(let i=0; i < myArr.length; i++){
+      if( myArr[i].feedback.split(" ").length >=15 ){
+        newArr.push(myArr[i]);
+      }
+    }
+    console.log("Task-STRETCH-2 : Feedback words >= 15: " , newArr);
+    return newArr;
+}
+ getLongReviews(reviews);
+
+//using filters method
+  //  function getLongReviews(myArray) {
+  //   const results = reviews.filter((review) => review.feedback.split(" ").length > 15);
+  //   console.log("Task-STRETCH-2 : Feedback words > 15: " , results);
+  //  }
+  //  getLongReviews(reviews);
+
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪💪💪💪💪 
 This stretch goal does not use the reviews data!  You create your own object in this stretch goal.
